@@ -1,13 +1,17 @@
+import { objectType } from './types';
 import { Vector } from './Vector';
 
 export class GameObject{
     
     protected position: Vector;
     protected size: Vector;
+    protected objecttype: objectType;
+    
 
-    public constructor(x: number, y:number, width: number, height: number){
+    public constructor(x: number, y:number, width: number, height: number, objecttype: objectType){
         this.position = new Vector(x,y);
         this.size = new Vector(width,height);
+        this.objecttype = objecttype;
     }
 
     public tick(){
@@ -16,6 +20,10 @@ export class GameObject{
 
     public render(ctx: CanvasRenderingContext2D){
 
+    }
+
+    public getObjectType(): objectType{
+        return this.objecttype
     }
 
     public getPosition(): Vector{
