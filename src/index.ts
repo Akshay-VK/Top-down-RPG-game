@@ -2,6 +2,7 @@ import { Player } from './Player/Player';
 import { Handler } from './handler';
 import { KeyInput } from './KeyInput';
 import { objectType } from './types';
+import { Tile } from './Tiles/Tile';
 
 
 const CANVAS: HTMLCanvasElement = document.querySelector('canvas');
@@ -24,7 +25,10 @@ var handler : Handler = new Handler();
 var keyInputs: KeyInput = new KeyInput(handler);
 
 
+
+handler.objects.push(new Tile(20,20,50,50));
 handler.objects.push(new Player(20,20,50,50,objectType.Player));
+
 
 function run(){
 

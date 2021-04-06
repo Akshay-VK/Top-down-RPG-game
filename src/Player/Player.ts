@@ -23,6 +23,26 @@ S = 18
 D = 3
 */
 
+    public keyboardTick(e: KeyboardEvent){        
+        var asciiCode = (e.key) ? e.key : e.code;
+
+        switch (asciiCode) {
+            case 'w':
+                this.setPosition(new Vector(this.position.x                ,this.position.y  -  this.size.y));
+                break;
+            case 'a':
+                this.setPosition(new Vector(this.position.x  -  this.size.x,this.position.y));
+                break;
+            case 's':
+                this.setPosition(new Vector(this.position.x                ,this.position.y  +  this.size.y));
+                break;
+            case 'd':
+                this.setPosition(new Vector(this.position.x  +  this.size.x,this.position.y));
+                break;
+        
+        }
+    }
+
     public setDirection(newDir: Vector){
         this.direction.x = newDir.x;
         this.direction.y = newDir.y;
@@ -37,6 +57,6 @@ D = 3
 
     public render(ctx: CanvasRenderingContext2D){
         ctx.fillStyle = 'white';
-        ctx.fillRect(this.position.x,this.position.y,this.size.x,this.size.y);
+        ctx.fillRect(this.position.x+10,this.position.y+10,this.size.x-20,this.size.y-20);
     }
 }

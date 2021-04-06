@@ -18,6 +18,10 @@ export class GameObject{
 
     }
 
+    public keyboardTick(e: KeyboardEvent){
+        
+    }
+
     public render(ctx: CanvasRenderingContext2D){
 
     }
