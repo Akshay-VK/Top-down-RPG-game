@@ -16,6 +16,8 @@ const HEIGHT: number = 400;
 CTX.canvas.width = WIDTH;
 CTX.canvas.height = HEIGHT;
 
+const PLAYING: boolean = true;
+
 
 //vars
 
@@ -40,19 +42,23 @@ handler.objects.push(new Player(0,0,50,50,objectType.Player));
 
 function run(){
 
+    if(PLAYING){
+            
 
-    CTX.fillStyle = 'black';
-    CTX.fillRect(0,0,WIDTH,HEIGHT);
+        CTX.fillStyle = 'black';
+        CTX.fillRect(0,0,WIDTH,HEIGHT);
 
 
 
-    handler.tick();
-    keyInputs.tick();
-    camera.tick(handler);
+        handler.tick();
+        keyInputs.tick();
+        camera.tick(handler);
 
-    handler.render(CTX,camera);
+        handler.render(CTX,camera);
+        handler.standingOn(handler);
 
-    requestAnimationFrame(run);
+        requestAnimationFrame(run);
+    }
 }
 
 function handle(e: KeyboardEvent){

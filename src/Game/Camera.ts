@@ -13,4 +13,5 @@ export class Camera extends GameObject{
         this.setPosition(new Vector(handler.getPlayerPos().x,handler.getPlayerPos().y));
         this.setPosition(new Vector(this.position.x - (this.size.x/2),this.position.y - (this.size.y/2)));
     }
+
 }

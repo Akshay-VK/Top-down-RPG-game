@@ -28,4 +28,24 @@ export class Handler{
             }
         }
     }
+
+    public standingOn(handler: Handler){
+        for(let i: number = 0; i < handler.objects.length;i++){
+            handler.objects[i].standingOn(handler);
+        }
+    }
+
+    public standingOnBlock(): objectType | string{
+        let playerPos: Vector = this.getPlayerPos();
+        for(let i = 0;i < this.objects.length;i++){
+            if(this.objects[i].getObjectType() == objectType.Tile && this.objects[i].getPosition().x == playerPos.x && this.objects[i].getPosition().y == playerPos.y){
+                //found = true;
+                return this.objects[i].getColor();
+            }
+        }   
+        return objectType.None;
+        // if(!found){
+        //     return objectType.None; 
+        // }    
+    }
 }

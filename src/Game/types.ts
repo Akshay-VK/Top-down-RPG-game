@@ -1,5 +1,6 @@
 export enum objectType{
     Player,
     Tile,
-    Camera
+    Camera,
+    None
 }

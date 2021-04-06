@@ -18,6 +18,14 @@ export class GameObject{
         this.color = color;
     }
 
+    public getColor(): string{
+        return this.color;
+    }
+
+    public standingOn(handler: Handler){
+
+    }
+
     public tick(handler?: Handler){
 
     }

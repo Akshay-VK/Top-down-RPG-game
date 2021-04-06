@@ -6,11 +6,11 @@ import {
 } from '../GameObject';
 import { objectType } from '../Game/types';
 import { Camera } from '../Game/Camera';
+import { Handler } from '../Game/handler';
 
 export class Player extends GameObject{   
     
     direction: Vector;
-    //objType: objectType = objectType.Player;
 
     constructor(x: number, y: number, width: number, height: number, objecttype: objectType) {
         super(x,y,width,height,objecttype, 'white');
@@ -48,12 +48,24 @@ D = 3
         this.direction.x = newDir.x;
         this.direction.y = newDir.y;
     }
+
+    public standingOn(handler: Handler){
+        //console.log(handler.standingOnBlock());
+        if(handler.standingOnBlock() != objectType.None){
+            console.log(handler.standingOnBlock());
+        }else{
+            console.log('standing on void');
+        }
+    }
     
     public tick(){
         
         this.position.x += this.direction.x;
         this.position.y += this.direction.y;
                         
+
+        // standing on
+
     }
 
     public render(ctx: CanvasRenderingContext2D, cam: Camera){
