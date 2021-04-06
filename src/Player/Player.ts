@@ -4,7 +4,8 @@ import {
 import {
     GameObject
 } from '../GameObject';
-import { objectType } from '../types';
+import { objectType } from '../Game/types';
+import { Camera } from '../Game/Camera';
 
 export class Player extends GameObject{   
     
@@ -12,7 +13,7 @@ export class Player extends GameObject{
     //objType: objectType = objectType.Player;
 
     constructor(x: number, y: number, width: number, height: number, objecttype: objectType) {
-        super(x,y,width,height,objecttype);
+        super(x,y,width,height,objecttype, 'white');
         this.direction = new Vector(0,0);
     }
 
@@ -55,8 +56,9 @@ D = 3
                         
     }
 
-    public render(ctx: CanvasRenderingContext2D){
+    public render(ctx: CanvasRenderingContext2D, cam: Camera){
         ctx.fillStyle = 'white';
-        ctx.fillRect(this.position.x+10,this.position.y+10,this.size.x-20,this.size.y-20);
+
+        ctx.fillRect((this.position.x+10)-cam.getPosition().x,(this.position.y+10)-cam.getPosition().y,this.size.x-20,this.size.y-20);
     }
 }

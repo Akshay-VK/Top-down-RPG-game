@@ -1,28 +1,32 @@
-import { objectType } from './types';
+import { Handler } from './Game/handler';
+import { objectType } from './Game/types';
 import { Vector } from './Vector';
+import { Camera } from './Game/Camera';
 
 export class GameObject{
     
     protected position: Vector;
     protected size: Vector;
     protected objecttype: objectType;
+    protected color: string;
     
 
-    public constructor(x: number, y:number, width: number, height: number, objecttype: objectType){
+    public constructor(x: number, y:number, width: number, height: number, objecttype: objectType, color: string){
         this.position = new Vector(x,y);
         this.size = new Vector(width,height);
         this.objecttype = objecttype;
+        this.color = color;
     }
 
-    public tick(){
+    public tick(handler?: Handler){
 
     }
 
     public keyboardTick(e: KeyboardEvent){
-        
+
     }
 
-    public render(ctx: CanvasRenderingContext2D){
+    public render(ctx: CanvasRenderingContext2D, cam?: Camera){
 
     }
 

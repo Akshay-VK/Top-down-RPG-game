@@ -1,7 +1,5 @@
-import { GameObject } from "./GameObject";
 import { Handler } from "./handler";
 import { objectType } from "./types";
-import { Vector } from "./Vector";
 
 export class KeyInput{
 
