@@ -1,6 +1,6 @@
 /*
 Credits:
-https://deno.land/x/perlinnoise/mod.ts
+https://github.com/hamptonmoore/PerlinNoise-Deno
 */
 
 export class PerlinNoise {

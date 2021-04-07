@@ -12,13 +12,19 @@ const CANVAS: HTMLCanvasElement = document.querySelector('canvas');
 
 const CTX = CANVAS.getContext('2d');
 
-const WIDTH: number = 600;
-const HEIGHT: number = 400;
+const WIDTH: number = 800;
+const HEIGHT: number = 600;
 
 CTX.canvas.width = WIDTH;
 CTX.canvas.height = HEIGHT;
 
 const PLAYING: boolean = true;
+
+
+const up: HTMLElement = document.getElementById('up');
+const left: HTMLElement = document.getElementById('left');
+const right: HTMLElement = document.getElementById('right');
+const down: HTMLElement = document.getElementById('down');
 
 
 //vars
@@ -78,6 +84,24 @@ function run(){
 function handle(e: KeyboardEvent){
     keyInputs.tickAct(e,handler);
 }
+
+up.addEventListener('click', (e) => {
+    handler.movePlayerUp();
+});
+
+left.addEventListener('click', (e) => {
+    handler.movePlayerLeft();
+});
+
+right.addEventListener('click', (e) => {
+    handler.movePlayerRight();
+});
+
+down.addEventListener('click', (e) => {
+    handler.movePlayerDown();
+});
+
+
 
 document.addEventListener('keypress',handle);
 requestAnimationFrame(run);

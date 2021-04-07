@@ -61,4 +61,36 @@ export class Handler{
         //     return objectType.None; 
         // }    
     }
+
+    public movePlayerUp(){
+        for(let i: number = 0; i < this.objects.length;i++){
+            if(this.objects[i].getObjectType() == objectType.Player){
+                return this.objects[i].moveUp();
+            }
+        }
+    }
+
+    public movePlayerRight(){
+        for(let i: number = 0; i < this.objects.length;i++){
+            if(this.objects[i].getObjectType() == objectType.Player){
+                return this.objects[i].moveRight();
+            }
+        }
+    }
+
+    public movePlayerLeft(){
+        for(let i: number = 0; i < this.objects.length;i++){
+            if(this.objects[i].getObjectType() == objectType.Player){
+                return this.objects[i].moveLeft();
+            }
+        }
+    }
+
+    public movePlayerDown(){
+        for(let i: number = 0; i < this.objects.length;i++){
+            if(this.objects[i].getObjectType() == objectType.Player){
+                return this.objects[i].moveDown();
+            }
+        }
+    }
 }

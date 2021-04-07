@@ -18,6 +18,22 @@ export class GameObject{
         this.color = color;
     }
 
+    public moveUp(){
+
+    }
+
+    public moveLeft(){
+
+    }
+
+    public moveRight(){
+
+    }
+
+    public moveDown(){
+        
+    }
+
     public getColor(): string{
         return this.color;
     }

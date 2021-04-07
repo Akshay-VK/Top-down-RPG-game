@@ -6,14 +6,16 @@ import { Tile } from '../Tiles/Tile';
 
 export class TerrainGenerator{
     perlin: PerlinNoise;
+    ZVal: number;
     constructor(){
         this.perlin = new PerlinNoise();
+        this.ZVal = Math.random();
     }
 
     public generateTerrain(camera: Camera, handler: Handler){
         for(let i = camera.getPosition().x; i < camera.getPosition().x+camera.getSize().x;i += 50){
             for(let j = camera.getPosition().y; j < camera.getPosition().y+camera.getSize().y;j += 50){
-                let perlinValue: number = this.perlin.noise(i/500, j/500, 0.1, 0, 1);
+                let perlinValue: number = this.perlin.noise(i/500, j/500, this.ZVal, 0, 1);
                 let tileType: string = this.getTileType(perlinValue, 0, 1);
                 handler.objects.push(new Tile(i, j, 50,50,tileType));
             }
