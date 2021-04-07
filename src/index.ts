@@ -1,9 +1,11 @@
-import { Player } from './Player/Player';
+//import { Player } from './Player/Player';
 import { Handler } from './Game/handler';
 import { KeyInput } from './Game/KeyInput';
 import { objectType } from './Game/types';
 import { Tile } from './Tiles/Tile';
 import { Camera } from './Game/Camera';
+import { TerrainGenerator } from './Generate/terrainGenerator';
+import { Player } from './Player/Player';
 
 
 const CANVAS: HTMLCanvasElement = document.querySelector('canvas');
@@ -29,15 +31,18 @@ var handler : Handler = new Handler();
 var keyInputs: KeyInput = new KeyInput(handler);
 var camera : Camera = new Camera(0,0,WIDTH,HEIGHT);
 
-
-
-handler.objects.push(new Tile(0,0,50,50,grass,));
-handler.objects.push(new Tile(50,50,50,50,grass));
-handler.objects.push(new Tile(50,0,50,50,water));
-handler.objects.push(new Tile(0,50,50,50,grass));
-handler.objects.push(new Tile(100,0,50,50,water));
+//var Player: Player = new Player(0,0,50,50,objectType.Player);
 
 handler.objects.push(new Player(0,0,50,50,objectType.Player));
+
+var generator: TerrainGenerator = new TerrainGenerator();
+
+// handler.objects.push(new Tile(0,0,50,50,grass,));
+// handler.objects.push(new Tile(50,50,50,50,grass));
+// handler.objects.push(new Tile(50,0,50,50,water));
+// handler.objects.push(new Tile(0,50,50,50,grass));
+// handler.objects.push(new Tile(100,0,50,50,water));
+
 
 
 function run(){
@@ -53,9 +58,18 @@ function run(){
         handler.tick();
         keyInputs.tick();
         camera.tick(handler);
+      
+        generator.generateTerrain(camera, handler);
+        //generator.emptyTerrain(handler);
 
+        
         handler.render(CTX,camera);
+        handler.renderPlayer(CTX,camera);
+
+
         handler.standingOn(handler);
+
+        generator.emptyTerrain(handler);
 
         requestAnimationFrame(run);
     }

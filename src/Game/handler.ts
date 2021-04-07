@@ -17,7 +17,20 @@ export class Handler{
 
     public render(ctx: CanvasRenderingContext2D, cam: Camera){
         for(let i: number = 0; i < this.objects.length;i++){
-            this.objects[i].render(ctx, cam);
+            if(this.objects[i].getObjectType() != objectType.Player){
+                this.objects[i].render(ctx, cam);
+            }
+        }
+        
+        console.log(this.objects.length);
+    }
+
+    public renderPlayer(ctx: CanvasRenderingContext2D, cam: Camera){
+        for(let i: number = 0; i < this.objects.length;i++){
+            if(this.objects[i].getObjectType() == objectType.Player){
+                this.objects[i].render(ctx, cam);
+                break;
+            }
         }
     }
 

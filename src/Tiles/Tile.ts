@@ -19,8 +19,13 @@ export class Tile extends GameObject{
     }
 
     public render(ctx: CanvasRenderingContext2D, cam: Camera){
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.position.x - cam.getPosition().x,this.position.y - cam.getPosition().y,this.size.x,this.size.y);
+        if(this.position.x > cam.getPosition().x-50 &&
+        this.position.x < cam.getPosition().x+cam.getSize().x &&
+        this.position.y > cam.getPosition().y -50 && 
+        this.position.y < cam.getPosition().y+cam.getSize().y){
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.position.x - cam.getPosition().x,this.position.y - cam.getPosition().y,this.size.x,this.size.y);
+        }
     }
 
 }

@@ -52,7 +52,7 @@ D = 3
     public standingOn(handler: Handler){
         //console.log(handler.standingOnBlock());
         if(handler.standingOnBlock() != objectType.None){
-            console.log(handler.standingOnBlock());
+            //console.log(handler.standingOnBlock());
         }else{
             console.log('standing on void');
         }
