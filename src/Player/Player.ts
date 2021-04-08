@@ -7,16 +7,19 @@ import {
 import { objectType } from '../Game/types';
 import { Camera } from '../Game/Camera';
 import { Handler } from '../Game/handler';
+import { Selector } from './selector';
 
 export class Player extends GameObject{   
     
     direction: Vector;
     color: string;
 
+
     constructor(x: number, y: number, width: number, height: number, objecttype: objectType) {
         super(x,y,width,height,objecttype, 'white');
         this.direction = new Vector(0,0);
         this.color = 'white';
+        this.selector = new Selector(this.position);
     }
 
 /*
@@ -27,18 +30,22 @@ D = 3
 */
     public moveUp(){
         this.setPosition(new Vector(this.position.x                ,this.position.y  -  this.size.y));
+        this.selector.updateHoldingTile(new Vector(this.position.x,this.position.y-this.size.y));
     }
 
     public moveLeft(){
         this.setPosition(new Vector(this.position.x  -  this.size.x,this.position.y));
+        this.selector.updateHoldingTile(new Vector(this.position.x-this.size.x,this.position.y));
     }
 
     public moveDown(){
         this.setPosition(new Vector(this.position.x                ,this.position.y  +  this.size.y));
+        this.selector.updateHoldingTile(new Vector(this.position.x,this.position.y+this.size.y));
     }
 
     public moveRight(){
         this.setPosition(new Vector(this.position.x  +  this.size.x,this.position.y));
+        this.selector.updateHoldingTile(new Vector(this.position.x+this.size.x,this.position.y));
     }
 
     public keyboardTick(e: KeyboardEvent){        
@@ -97,5 +104,7 @@ D = 3
         
         ctx.fillStyle = this.color;
         ctx.fillRect((this.position.x+20)-cam.getPosition().x,(this.position.y+20)-cam.getPosition().y,this.size.x-40,this.size.y-40);
+
+        this.selector.render(ctx, cam);
     }
 }

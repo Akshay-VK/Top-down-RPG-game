@@ -2,6 +2,7 @@ import { Handler } from './Game/handler';
 import { objectType } from './Game/types';
 import { Vector } from './Vector';
 import { Camera } from './Game/Camera';
+import { Selector } from './Player/selector';
 
 export class GameObject{
     
@@ -9,6 +10,7 @@ export class GameObject{
     protected size: Vector;
     protected objecttype: objectType;
     protected color: string;
+    public selector: Selector;
     
 
     public constructor(x: number, y:number, width: number, height: number, objecttype: objectType, color: string){

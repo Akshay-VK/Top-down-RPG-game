@@ -22,7 +22,7 @@ export class Handler{
             }
         }
         
-        console.log(this.objects.length);
+        //console.log(this.objects.length);
     }
 
     public renderPlayer(ctx: CanvasRenderingContext2D, cam: Camera){
@@ -42,6 +42,14 @@ export class Handler{
         }
     }
 
+    public getPlayerSelectorPos(): Vector{
+        for(let i: number = 0; i < this.objects.length;i++){
+            if(this.objects[i].getObjectType() == objectType.Player){
+                return this.objects[i].selector.holdingTile;
+            }
+        }
+    }
+
     public standingOn(handler: Handler){
         for(let i: number = 0; i < handler.objects.length;i++){
             handler.objects[i].standingOn(handler);
@@ -49,11 +57,13 @@ export class Handler{
     }
 
     public standingOnBlock(): objectType | string{
-        let playerPos: Vector = this.getPlayerPos();
+        let playerSelectorPos: Vector = this.getPlayerSelectorPos();
         for(let i = 0;i < this.objects.length;i++){
-            if(this.objects[i].getObjectType() == objectType.Tile && this.objects[i].getPosition().x == playerPos.x && this.objects[i].getPosition().y == playerPos.y){
+            if(this.objects[i].getObjectType() == objectType.Tile && this.objects[i].getPosition().x == playerSelectorPos.x && this.objects[i].getPosition().y == playerSelectorPos.y){
                 //found = true;
+                console.log(this.objects[i].getColor());
                 return this.objects[i].getColor();
+
             }
         }   
         return objectType.None;
