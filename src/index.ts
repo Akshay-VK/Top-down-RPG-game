@@ -2,10 +2,11 @@
 import { Handler } from './Game/handler';
 import { KeyInput } from './Game/KeyInput';
 import { objectType } from './Game/types';
-import { Tile } from './Tiles/Tile';
+//import { Tile } from './Tiles/Tile';
 import { Camera } from './Game/Camera';
 import { TerrainGenerator } from './Generate/terrainGenerator';
 import { Player } from './Player/Player';
+import { Tree } from './Tiles/Tree';
 
 
 const CANVAS: HTMLCanvasElement = document.querySelector('canvas');
@@ -47,7 +48,7 @@ var generator: TerrainGenerator = new TerrainGenerator();
 // handler.objects.push(new Tile(50,50,50,50,grass));
 // handler.objects.push(new Tile(50,0,50,50,water));
 // handler.objects.push(new Tile(0,50,50,50,grass));
-// handler.objects.push(new Tile(100,0,50,50,water));
+handler.objects.push(new Tree(100,0,50,50));
 
 
 
