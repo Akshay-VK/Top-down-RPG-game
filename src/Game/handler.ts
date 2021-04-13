@@ -17,7 +17,7 @@ export class Handler{
 
     public render(ctx: CanvasRenderingContext2D, cam: Camera){
         for(let i: number = 0; i < this.objects.length;i++){
-            if(this.objects[i].getObjectType() != objectType.Player){
+            if(this.objects[i].getObjectType() !== objectType.Player){
                 this.objects[i].render(ctx, cam);
             }
         }

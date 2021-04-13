@@ -9,7 +9,7 @@ export class TerrainGenerator{
     ZVal: number;
     constructor(){
         this.perlin = new PerlinNoise();
-        this.ZVal = Math.random();
+        this.ZVal = Math.random()*Math.random();
     }
 
     public generateTerrain(camera: Camera, handler: Handler){
@@ -31,7 +31,7 @@ export class TerrainGenerator{
         }
     }
 
-    private getTileType(value: number, min: number, max:number): string {
+    public getTileType(value: number, min: number, max:number): string {
         let percent: number = (value/(max-min))*100;
         if(percent < 30){
             return 'blue';//water

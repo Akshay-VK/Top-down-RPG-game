@@ -6,6 +6,7 @@ import { objectType } from './Game/types';
 import { Camera } from './Game/Camera';
 import { TerrainGenerator } from './Generate/terrainGenerator';
 import { Player } from './Player/Player';
+import { TreeGenerator } from './Generate/treeGenerator';
 
 
 const CANVAS: HTMLCanvasElement = document.querySelector('canvas');
@@ -42,6 +43,7 @@ var camera : Camera = new Camera(0,0,WIDTH,HEIGHT);
 handler.objects.push(new Player(0,0,50,50,objectType.Player));
 
 var generator: TerrainGenerator = new TerrainGenerator();
+var treeGenerator : TreeGenerator = new TreeGenerator(generator);
 
 // handler.objects.push(new Tile(0,0,50,50,grass,));
 // handler.objects.push(new Tile(50,50,50,50,grass));
@@ -65,6 +67,7 @@ function run(){
         camera.tick(handler);
       
         generator.generateTerrain(camera, handler);
+        treeGenerator.generateTrees(camera,handler);
         //generator.emptyTerrain(handler);
 
         
@@ -74,8 +77,11 @@ function run(){
 
         handler.standingOn(handler);
 
-        generator.emptyTerrain(handler);
+        console.log(handler.objects.length);
 
+        generator.emptyTerrain(handler);
+        treeGenerator.emptyTrees(handler);
+        
         requestAnimationFrame(run);
     }
 }
