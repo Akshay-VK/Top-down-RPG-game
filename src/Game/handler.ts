@@ -61,7 +61,7 @@ export class Handler{
         for(let i = 0;i < this.objects.length;i++){
             if(this.objects[i].getObjectType() == objectType.Tile && this.objects[i].getPosition().x == playerSelectorPos.x && this.objects[i].getPosition().y == playerSelectorPos.y){
                 //found = true;
-                console.log(this.objects[i].getColor());
+                //console.log(this.objects[i].getColor());
                 return this.objects[i].getColor();
 
             }

@@ -4,12 +4,14 @@ import { Camera } from "../Game/Camera";
 
 export class Tile extends GameObject{
 
+    renderLayer: number;
+
     constructor(x: number, y: number, width: number, height: number, color: string){
         
         super(x,y,width,height,objectType.Tile, color);
 
         
-
+        this.renderLayer = 1;
         this.objecttype = objectType.Tile;
 
     }
