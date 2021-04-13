@@ -1,3 +1,4 @@
+import { classicNameResolver } from "../../node_modules/typescript/lib/typescript";
 import { Camera } from "../Game/Camera";
 import { Handler } from "../Game/handler";
 import { objectType } from "../Game/types";
@@ -22,12 +23,15 @@ export class TreeGenerator{
                 //getting perlin value
                 let perlinValue: number = this.perlin.noise(i/500, j/500, this.zValue, 0, 1);
                 //get perlin value for same spot from terrain generator
-                let tileType: string = this.terrainGeneratorReference.getTileType(perlinValue, 0, 1);
+                let terrainPerlinValue: number = this.perlin.noise(i/500, j/500, this.terrainGeneratorReference.ZVal, 0, 1);
+                let tileType: string = this.terrainGeneratorReference.getTileType(terrainPerlinValue, 0, 1);
                 //compare if the tree value is on  grass
                 //generate tree
                 //or dont
-                if(tileType == 'grass'){
+                
+                if(tileType == 'green' && perlinValue*100 < 45){
                     handler.objects.push(new Tree(i, j, 50,50));
+                    //console.log('tree generated');
                 }
 
             }
