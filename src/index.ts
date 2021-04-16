@@ -1,8 +1,6 @@
-//import { Player } from './Player/Player';
 import { Handler } from './Game/handler';
 import { KeyInput } from './Game/KeyInput';
 import { objectType } from './Game/types';
-//import { Tile } from './Tiles/Tile';
 import { Camera } from './Game/Camera';
 import { TerrainGenerator } from './Generate/terrainGenerator';
 import { Player } from './Player/Player';
@@ -19,9 +17,12 @@ const HEIGHT: number = 600;
 CTX.canvas.width = WIDTH;
 CTX.canvas.height = HEIGHT;
 
-const PLAYING: boolean = true;
+var PLAYING: boolean = true;
 
+//image element for rendering
+const tileset: HTMLImageElement = document.querySelector('#tileset');
 
+//elements for button controls
 const up: HTMLElement = document.getElementById('up');
 const left: HTMLElement = document.getElementById('left');
 const right: HTMLElement = document.getElementById('right');
@@ -29,9 +30,6 @@ const down: HTMLElement = document.getElementById('down');
 
 
 //vars
-
-var grass: string = 'green';
-var water: string = 'blue';
 
 //MAIN CODE
 var handler : Handler = new Handler();
@@ -42,7 +40,7 @@ var camera : Camera = new Camera(0,0,WIDTH,HEIGHT);
 
 handler.objects.push(new Player(0,0,50,50,objectType.Player));
 
-var generator: TerrainGenerator = new TerrainGenerator();
+var generator: TerrainGenerator = new TerrainGenerator(tileset);
 var treeGenerator : TreeGenerator = new TreeGenerator(generator);
 
 // handler.objects.push(new Tile(0,0,50,50,grass,));
@@ -50,6 +48,11 @@ var treeGenerator : TreeGenerator = new TreeGenerator(generator);
 // handler.objects.push(new Tile(50,0,50,50,water));
 // handler.objects.push(new Tile(0,50,50,50,grass));
 
+
+// tileset.onload = function(){
+//     PLAYING = true;
+//     console.log('happening?');
+// }
 
 
 function run(){
@@ -70,7 +73,7 @@ function run(){
         treeGenerator.generateTrees(camera,handler);
         //generator.emptyTerrain(handler);
 
-        
+         
         handler.render(CTX,camera);
         handler.renderPlayer(CTX,camera);
 

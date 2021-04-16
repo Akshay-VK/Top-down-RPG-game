@@ -1,9 +1,7 @@
-import { classicNameResolver } from "../../node_modules/typescript/lib/typescript";
 import { Camera } from "../Game/Camera";
 import { Handler } from "../Game/handler";
 import { objectType } from "../Game/types";
 import { PerlinNoise } from "../PerlinNoise";
-import { Tile } from "../Tiles/Tile";
 import { Tree } from "../Tiles/Tree";
 import { TerrainGenerator } from "./terrainGenerator";
 
@@ -46,18 +44,4 @@ export class TreeGenerator{
             }
         }
     }
-    //prlly not needed
-    // private getIfTreeExists(value: number, min: number, max:number): boolean {
-    //     let percent: number = (value/(max-min))*100;
-    //     if(percent < 30){
-    //         return false;//water
-    //     }else if(percent < 35){
-    //         return false;//sand
-    //     }else if(percent < 80){
-    //         return true;//grass
-    //     }
-    //     else{
-    //         return false;//dirt
-    //     }
-    // }
 }
