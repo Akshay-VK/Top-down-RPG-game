@@ -67,6 +67,16 @@ export class Tile extends GameObject{
                     this.position.y - cam.getPosition().y,
                     this.size.x,
                     this.size.y);
+            }else if(this.color == 'brown'){
+                ctx.drawImage(this.renderImage, 
+                    192,
+                    64,
+                    64,
+                    64,
+                    this.position.x - cam.getPosition().x,
+                    this.position.y - cam.getPosition().y,
+                    this.size.x,
+                    this.size.y);
             }
 
 

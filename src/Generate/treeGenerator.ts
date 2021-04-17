@@ -9,10 +9,12 @@ export class TreeGenerator{
     perlin: PerlinNoise;
     zValue: number;
     terrainGeneratorReference: TerrainGenerator;
-    constructor(terrainGenerator: TerrainGenerator){
+    renderImage: HTMLImageElement;
+    constructor(terrainGenerator: TerrainGenerator, renderImage: HTMLImageElement){
         this.perlin = new PerlinNoise();
         this.zValue = Math.random()*Math.random();
         this.terrainGeneratorReference = terrainGenerator;
+        this.renderImage = renderImage;
     }
 
     public generateTrees(camera: Camera, handler: Handler){
@@ -28,7 +30,7 @@ export class TreeGenerator{
                 //or dont
                 
                 if(tileType == 'green' && perlinValue*100 < 45){
-                    handler.objects.push(new Tree(i, j, 50,50));
+                    handler.objects.push(new Tree(i, j, 50,50,this.renderImage));
                     //console.log('tree generated');
                 }
 

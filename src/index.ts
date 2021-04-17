@@ -41,7 +41,7 @@ var camera : Camera = new Camera(0,0,WIDTH,HEIGHT);
 handler.objects.push(new Player(0,0,50,50,objectType.Player));
 
 var generator: TerrainGenerator = new TerrainGenerator(tileset);
-var treeGenerator : TreeGenerator = new TreeGenerator(generator);
+var treeGenerator : TreeGenerator = new TreeGenerator(generator,tileset);
 
 // handler.objects.push(new Tile(0,0,50,50,grass,));
 // handler.objects.push(new Tile(50,50,50,50,grass));
