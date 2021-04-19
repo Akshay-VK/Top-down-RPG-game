@@ -6,4 +6,8 @@ export class Vector{
         this.x = x;
         this.y = y;
     }
+
+    public add(vec: Vector){
+	 return new Vector(this.x+vec.x,this.y+vec.y);
+    }
 }

@@ -43,23 +43,13 @@ handler.objects.push(new Player(0,0,50,50,objectType.Player));
 var generator: TerrainGenerator = new TerrainGenerator(tileset);
 var treeGenerator : TreeGenerator = new TreeGenerator(generator,tileset);
 
-// handler.objects.push(new Tile(0,0,50,50,grass,));
-// handler.objects.push(new Tile(50,50,50,50,grass));
-// handler.objects.push(new Tile(50,0,50,50,water));
-// handler.objects.push(new Tile(0,50,50,50,grass));
-
-
-// tileset.onload = function(){
-//     PLAYING = true;
-//     console.log('happening?');
-// }
-
 
 function run(){
 
+    //if playing is for controlling the game for future needs
     if(PLAYING){
             
-
+        //background paint
         CTX.fillStyle = 'black';
         CTX.fillRect(0,0,WIDTH,HEIGHT);
 
@@ -93,6 +83,8 @@ function handle(e: KeyboardEvent){
     keyInputs.tickAct(e,handler);
 }
 
+
+//button down input handlers fro mobile
 up.addEventListener('click', (e) => {
     handler.movePlayerUp();
 });
