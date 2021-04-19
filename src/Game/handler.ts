@@ -9,12 +9,15 @@ export class Handler{
         this.objects = new Array<GameObject>();
     }
 
+
+    // all objects tick method as it is required in every game object
     public tick(){
         for(let i: number = 0; i < this.objects.length;i++){
             this.objects[i].tick();
         }
     }
 
+    //renders all gameobjects which aren't players
     public render(ctx: CanvasRenderingContext2D, cam: Camera){
         for(let i: number = 0; i < this.objects.length;i++){
             if(this.objects[i].getObjectType() !== objectType.Player){
@@ -25,6 +28,7 @@ export class Handler{
         //console.log(this.objects.length);
     }
 
+    //renders player
     public renderPlayer(ctx: CanvasRenderingContext2D, cam: Camera){
         for(let i: number = 0; i < this.objects.length;i++){
             if(this.objects[i].getObjectType() == objectType.Player){
